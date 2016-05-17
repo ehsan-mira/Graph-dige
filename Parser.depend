@@ -14,3 +14,19 @@
 	<fstream>
 	"string.h"
 
+1463321872 source:d:\c++\parser\graph-dige\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Parser.h"
+
+1463501386 d:\c++\parser\graph-dige\include\parser.h
+	<vector>
+
+1463501404 source:d:\c++\parser\graph-dige\src\parser.cpp
+	<iostream>
+	"Parser.h"
+	<fstream>
+	"string"
+	"sstream"
+

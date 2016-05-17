@@ -14,5 +14,5 @@ class Parser
         vector <string> X;
         vector <string> Y;
         vector <string> color;
-        vector <string> nNum;
+        vector <int> nNum;
 };
