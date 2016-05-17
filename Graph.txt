@@ -1,0 +1,2 @@
+Node:  x_pos: 1  y_pos: 1  weight: 1  color: 1  neighbours:
+Node:  x_pos:    y_pos:    weight:    color:    neighbours:
