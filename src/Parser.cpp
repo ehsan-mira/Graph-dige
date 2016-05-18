@@ -42,7 +42,7 @@ void Parser::Parse()
     //cin>>NodesNumber;
 
                     ///write in file
-    if(Graph)
+    /*if(Graph)
     {
         while(Graph>>line)
         {
@@ -118,15 +118,88 @@ void Parser::Parse()
                 nNum[NodesNumber] = neiNum;
             }
         }
-    }
+    }*/
+
+
                         ///read from file
     int a;
+    int num=0;
     Graph.seekg(0,ios::beg);
     a = Graph.tellg();
     cout<<a;
 
+    if(Graph.is_open())
+    {
+        while(Graph>>line)
+        {
+            cout<<line<<endl;
+            if(line=="Node:")
+            {
+                //Graph>>Node[num];
+                num++;
+                cout<<Node[num];
+            }
 
+            if(line=="x_pos:")
+            {
+                Graph>>X[num];
+                stringstream ss(X[num]);
+                int x_pos;
+                ss >> x_pos;
+                X[num] = x_pos;
+                cout<<X[num];
+            }
 
+            if(line=="y-pos:")
+            {
+                Graph>>Y[num];
+                stringstream ss(Y[num]);
+                int y_pos;
+                ss >> y_pos;
+                Y[num] = y_pos;
+                cout<<Y[num];
+            }
+
+            if(line=="weight:")
+            {
+                Graph>>weight[num];
+                stringstream ss(weight[num]);
+                int w;
+                ss >> w;
+                weight[num] = w;
+                cout<<weight[num];
+            }
+
+            if(line=="color:")
+            {
+                Graph>>color[num];
+                cout<<color[num];
+            }
+
+            if(line=="neighbours:")
+            {
+                string n;
+                while(n!="   ")
+                {
+                    Graph>>n;
+                    stringstream ss(n);
+                    int c;
+                    ss >> c;
+                    n = c;
+                    Neighbours[num].push_back(c);
+                }
+            }
+        }
+    }
+
+    for(int i=0; i<NodesNumber; i++)
+    {
+        cout<<"Node"<<Node[i]<<endl;
+        cout<<"weight"<<weight[i]<<endl;
+        cout<<"X"<<X[i]<<endl;
+        cout<<"Y"<<Y[i]<<endl;
+        cout<<"color"<<color[i]<<endl;
+    }
 
     Graph.close();
 }

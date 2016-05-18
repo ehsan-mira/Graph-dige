@@ -15,4 +15,5 @@ class Parser
         vector <string> Y;
         vector <string> color;
         vector <int> nNum;
+        vector <vector <int> > Neighbours;
 };
