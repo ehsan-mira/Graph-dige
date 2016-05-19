@@ -11,6 +11,29 @@ Parser::Parser()
 {
     this->NodesNumber=0;
 }
+void Parser::setNodes()
+{
+    for(int i=0,j=0;i<NodesNumber;i++)
+    {
+        graph.Nodes[i][j]->xPos = X[i].toInt();
+        graph.Nodes[i][j]->yPos = Y[i].toInt();
+        graph.Nodes[i][j]->color = color[i];
+        graph.Nodes[i][j]->weight = weight[i].toInt();
+        graph.Nodes[i][j]->neighboursNum = nNum[i];
+
+    }
+    for(int i=0;i<NodesNumber;i++)
+    {
+        for(int j=1;j<NodesNumber;j++)
+        {
+
+            graph.Nodes[i][j] = graph.Nodes[Neighbours[i][j].toInt()][j];
+
+        }
+
+    }
+}
+
 
 void Parser::func()
 {

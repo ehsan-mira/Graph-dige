@@ -1,16 +1,11 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "Parser.h"
+#include "mainwindow.h"
+#include <QApplication>
 
-using namespace std;
-
-int main()
+int main(int argc, char *argv[])
 {
-    Parser p;
-    //p.func();
-    //p.Write();
-    p.Read();
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
-    return 0;
+    return a.exec();
 }
