@@ -164,7 +164,7 @@ void Parser::Read()
     {
         while(Graph>>line)
         {
-            cout<<line<<endl;
+            //cout<<line<<endl;
             if(line=="Node:")
             {
                 Node.push_back("Node");
@@ -219,17 +219,11 @@ void Parser::Read()
                 while(n!="end" || n!="|");
 
                 nNum.push_back(counter);
-
-                for(int i=0; i<counter; i++)
-                {
-                    cout<<"N"<<Neighbours[num][i];
-                }
-                cout<<endl;
             }
         }
     }
 
-    for(int i=0; i<NodesNumber; i++)
+    /*for(int i=0; i<NodesNumber; i++)
     {
         cout<<"Node"<<Node[i]<<endl;
         cout<<"X"<<X[i]<<endl;
@@ -237,7 +231,7 @@ void Parser::Read()
         cout<<"weight"<<weight[i]<<endl;
         cout<<"color"<<color[i]<<endl;
         cout<<"nNum"<<nNum[i]<<endl;
-    }
+    }*/
 
     Graph.close();
 }
