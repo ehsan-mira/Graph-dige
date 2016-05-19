@@ -3,6 +3,7 @@
 #include <fstream>
 #include "string"
 #include "sstream"
+#include "locale"
 
 using namespace std;
 
@@ -10,6 +11,23 @@ Parser::Parser()
 {
     this->NodesNumber=0;
 }
+
+void Parser::func()
+{
+   cout<<"How many Nodes do you want?!";
+   cin>>NodesNumber;
+
+   ofstream Graph("Graph.txt");
+
+   Graph<<NodesNumber<<"\n";
+
+   for(int i=0; i<NodesNumber; i++)
+        Graph<<"Node:  x_pos:      y_pos:      weight:     color:         neighbours:                                                                                                                                                        \n";
+        Graph<<"end \n";
+
+    Graph.close();
+}
+
 
 void Parser::Write()
 {
@@ -46,7 +64,7 @@ void Parser::Write()
                 string x;
                 cout<<"enter the x position of Node "<<num<<" :";
                 cin>>x;
-                Graph<<" "<<x;
+                Graph<<x;
             }
 
             if(line=="y_pos:")
@@ -54,7 +72,7 @@ void Parser::Write()
                 string y;
                 cout<<"enter the y position of Node "<<num<<" :";
                 cin>>y;
-                Graph<<" "<<y;
+                Graph<<y;
             }
 
             if(line=="weight:")
@@ -62,7 +80,7 @@ void Parser::Write()
                 string weight;
                 cout<<"enter the weight position of Node "<<num<<" :";
                 cin>>weight;
-                Graph<<" "<<weight;
+                Graph<<weight;
             }
 
             if(line=="color:")
@@ -71,7 +89,7 @@ void Parser::Write()
                 cout<<"enter the color position of Node "<<num<<" :";
                 cout<<" red or green or blue"<<endl;
                 cin>>color;
-                Graph<<" "<<color;
+                Graph<<color;
             }
 
             if(line=="neighbours:")
@@ -79,7 +97,7 @@ void Parser::Write()
                 int neiNum=0;
                 string n;
                 bool q=1;
-                cout<<"enter the neighbours of Node "<<num<<" :";
+                cout<<"enter the neighbours of Node "<<num<<" :(not this node)";
                 while(q==1)
                 {
                     cin>>n;
@@ -92,7 +110,7 @@ void Parser::Write()
                     if(Number <= NodesNumber && Number >= 0 && Number!=num)
                         {
                             neiNum++;
-                            Graph<<" "<<n;
+                            Graph<<n;
                         }
                     else
                         q=0;
@@ -128,7 +146,8 @@ void Parser::Read()
         X.push_back("0");
         Y.push_back("0");
         color.push_back("0");
-        //Neighbours.push_back(0);                      ///injaaaaaaa
+        vector <int> newvec;
+        Neighbours.push_back(newvec);                      ///injaaaaaaa
     }
 
     for(int i=0; i<NodesNumber; i++)
@@ -173,6 +192,7 @@ void Parser::Read()
 
             if(line=="neighbours:")
             {
+                int ehsan=0;
                 int counter=0;
                 string n;
                 do
@@ -182,11 +202,18 @@ void Parser::Read()
                     cout<<n<<endl;
                     stringstream ss(n);
                     ss>>c;
+                    cout<<c<<endl;
+
+                    for(int i=0; i<n.length();i++)
+                    if(!isalnum(n[i]) || c<1 || c>NodesNumber || counter>=NodesNumber)
+                        break;
+
                     cout<<"jhffkjghdjksf;l"<<endl;
-                    Neighbours[num].push_back(c);               ///injaaaaaa
+                    Neighbours[num].push_back(c-1);               ///injaaaaaa
                     counter++;
+                    ehsan++;
                 }
-                while(n!="   ");
+                while(n!="end");
 
                 nNum.push_back(counter);
             }

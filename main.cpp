@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     Parser p;
+    p.func();
     p.Write();
     p.Read();
 

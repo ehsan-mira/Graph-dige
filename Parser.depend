@@ -14,19 +14,20 @@
 	<fstream>
 	"string.h"
 
-1463602316 source:d:\c++\parser\graph-dige\main.cpp
+1463648099 source:d:\c++\parser\graph-dige\main.cpp
 	<iostream>
 	<fstream>
 	<string>
 	"Parser.h"
 
-1463581448 d:\c++\parser\graph-dige\include\parser.h
+1463642801 d:\c++\parser\graph-dige\include\parser.h
 	<vector>
 
-1463625796 source:d:\c++\parser\graph-dige\src\parser.cpp
+1463648437 source:d:\c++\parser\graph-dige\src\parser.cpp
 	<iostream>
 	"Parser.h"
 	<fstream>
 	"string"
 	"sstream"
+	"locale"
 

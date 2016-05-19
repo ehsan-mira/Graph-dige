@@ -1,6 +1,0 @@
-5
-Node:  x_pos:     y_pos:     weight:     color:         neighbours:                                                                                                                                                         
-Node:  x_pos:     y_pos:     weight:     color:         neighbours:                                                                                                                                                           
-Node:  x_pos:     y_pos:     weight:     color:         neighbours:                                                                                                                                                         
-Node:  x_pos:     y_pos:     weight:     color:         neighbours:                                                                                                                                                         
-Node:  x_pos:     y_pos:     weight:     color:         neighbours:                                                                                                                                                         

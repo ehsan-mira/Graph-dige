@@ -7,7 +7,7 @@ class Parser
         Parser();
         //Graph Graph;
         int NodesNumber;
-        void Parse();
+        void func();
         void Write();
         void Read();
 
