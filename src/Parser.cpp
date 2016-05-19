@@ -22,7 +22,7 @@ void Parser::func()
    Graph<<NodesNumber<<"\n";
 
    for(int i=0; i<NodesNumber; i++)
-        Graph<<"Node:  x_pos:      y_pos:      weight:     color:         neighbours:                                                                                                                                                        \n";
+        Graph<<"| Node:  x_pos:      y_pos:      weight:     color:         neighbours:                                                                                                                                                        \n";
         Graph<<"end \n";
 
     Graph.close();
@@ -147,17 +147,17 @@ void Parser::Read()
         Y.push_back("0");
         color.push_back("0");
         vector <int> newvec;
-        Neighbours.push_back(newvec);                      ///injaaaaaaa
+        Neighbours.push_back(newvec);
     }
 
-    for(int i=0; i<NodesNumber; i++)
+    /*for(int i=0; i<NodesNumber; i++)
     {
         cout<<"Node"<<Node[i]<<endl;
         cout<<"weight"<<weight[i]<<endl;
         cout<<"X"<<X[i]<<endl;
         cout<<"Y"<<Y[i]<<endl;
         cout<<"color"<<color[i]<<endl;
-    }
+    }*/
 
 
     if(Graph.is_open())
@@ -192,7 +192,6 @@ void Parser::Read()
 
             if(line=="neighbours:")
             {
-                int ehsan=0;
                 int counter=0;
                 string n;
                 do
@@ -204,30 +203,28 @@ void Parser::Read()
                     ss>>c;
                     cout<<c<<endl;
 
-                    for(int i=0; i<n.length();i++)
-                    if(!isalnum(n[i]) || c<1 || c>NodesNumber || counter>=NodesNumber)
+                    if(c<1 || c>NodesNumber || counter>=NodesNumber )
                         break;
 
-                    cout<<"jhffkjghdjksf;l"<<endl;
-                    Neighbours[num].push_back(c-1);               ///injaaaaaa
+                    Neighbours[num].push_back(c-1);
                     counter++;
-                    ehsan++;
                 }
-                while(n!="end");
+                while(n!="end" || n!="|");
 
                 nNum.push_back(counter);
             }
         }
     }
 
-    /*for(int i=0; i<NodesNumber; i++)
+    for(int i=0; i<NodesNumber; i++)
     {
         cout<<"Node"<<Node[i]<<endl;
-        cout<<"weight"<<weight[i]<<endl;
         cout<<"X"<<X[i]<<endl;
         cout<<"Y"<<Y[i]<<endl;
+        cout<<"weight"<<weight[i]<<endl;
         cout<<"color"<<color[i]<<endl;
-    }*/
+        cout<<"nNum"<<nNum[i]<<endl;
+    }
 
     Graph.close();
 }
