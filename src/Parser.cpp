@@ -10,39 +10,21 @@ Parser::Parser()
 {
     this->NodesNumber=0;
 }
-void Parser::Parse()
+
+void Parser::Write()
 {
     string line;
     string file;
-    fstream Graph("Graph.txt");
+    int num=0;
+    fstream Graph;
+    Graph.open("Graph.txt");
 
-    //while(Graph)
-    //{
-    //    Graph >> file;
-    //    cout <<file;
-    //}
+    Graph>>line;
+    stringstream ss(line);
+    ss>>NodesNumber;
+    cout<<NodesNumber<<endl;
 
-    /*a=Graph.tellg();
-    Graph.seekg(0,ios::end);
-    b=Graph.tellg();
-    cout<<b-a;*/
-
-    //if (Graph.is_open())
-    //{
-        //    Graph.seekg(2);
-        //    s = Graph.tellg();
-        //    Graph.seekg(s+2);
-    /*while (!Graph.eof())
-    {
-        Graph>>main;
-        main.append(co);
-        cout<<main;
-    }*/
-    //cout<<"How many Nodes do you want?!";
-    //cin>>NodesNumber;
-
-                    ///write in file
-    /*if(Graph)
+    if(Graph)
     {
         while(Graph>>line)
         {
@@ -50,7 +32,7 @@ void Parser::Parse()
 
             if(line=="Node:")
             {
-                NodesNumber++;
+                num++;
                 Node.push_back("Node");
                 weight.push_back("0");
                 X.push_back("0");
@@ -62,7 +44,7 @@ void Parser::Parse()
             if(line=="x_pos:")
             {
                 string x;
-                cout<<"enter the x position of Node "<<NodesNumber<<" :";
+                cout<<"enter the x position of Node "<<num<<" :";
                 cin>>x;
                 Graph<<" "<<x;
             }
@@ -70,7 +52,7 @@ void Parser::Parse()
             if(line=="y_pos:")
             {
                 string y;
-                cout<<"enter the y position of Node "<<NodesNumber<<" :";
+                cout<<"enter the y position of Node "<<num<<" :";
                 cin>>y;
                 Graph<<" "<<y;
             }
@@ -78,7 +60,7 @@ void Parser::Parse()
             if(line=="weight:")
             {
                 string weight;
-                cout<<"enter the weight position of Node "<<NodesNumber<<" :";
+                cout<<"enter the weight position of Node "<<num<<" :";
                 cin>>weight;
                 Graph<<" "<<weight;
             }
@@ -86,7 +68,7 @@ void Parser::Parse()
             if(line=="color:")
             {
                 string color;
-                cout<<"enter the color position of Node "<<NodesNumber<<" :";
+                cout<<"enter the color position of Node "<<num<<" :";
                 cout<<" red or green or blue"<<endl;
                 cin>>color;
                 Graph<<" "<<color;
@@ -97,7 +79,7 @@ void Parser::Parse()
                 int neiNum=0;
                 string n;
                 bool q=1;
-                cout<<"enter the neighbours of Node "<<NodesNumber<<" :";
+                cout<<"enter the neighbours of Node "<<num<<" :";
                 while(q==1)
                 {
                     cin>>n;
@@ -107,7 +89,7 @@ void Parser::Parse()
                     ss >> Number;
                     cout<<Number;
 
-                    if(Number <= NodesNumber && Number >= 0)
+                    if(Number <= NodesNumber && Number >= 0 && Number!=num)
                         {
                             neiNum++;
                             Graph<<" "<<n;
@@ -115,81 +97,38 @@ void Parser::Parse()
                     else
                         q=0;
                 }
-                nNum[NodesNumber] = neiNum;
+                nNum[num] = neiNum;
             }
         }
-    }*/
+    }
+
+    Graph.close();
+}
+
+void Parser::Read()
+{
+    string line;
+    ifstream Graph("Graph.txt");
 
 
-                        ///read from file
     int a;
     int num=0;
     Graph.seekg(0,ios::beg);
     a = Graph.tellg();
     cout<<a;
 
-    if(Graph.is_open())
+    Graph>>line;
+    stringstream ss(line);
+    ss >> NodesNumber;
+
+    for(int i=0; i<NodesNumber; i++)
     {
-        while(Graph>>line)
-        {
-            cout<<line<<endl;
-            if(line=="Node:")
-            {
-                //Graph>>Node[num];
-                num++;
-                cout<<Node[num];
-            }
-
-            if(line=="x_pos:")
-            {
-                Graph>>X[num];
-                stringstream ss(X[num]);
-                int x_pos;
-                ss >> x_pos;
-                X[num] = x_pos;
-                cout<<X[num];
-            }
-
-            if(line=="y-pos:")
-            {
-                Graph>>Y[num];
-                stringstream ss(Y[num]);
-                int y_pos;
-                ss >> y_pos;
-                Y[num] = y_pos;
-                cout<<Y[num];
-            }
-
-            if(line=="weight:")
-            {
-                Graph>>weight[num];
-                stringstream ss(weight[num]);
-                int w;
-                ss >> w;
-                weight[num] = w;
-                cout<<weight[num];
-            }
-
-            if(line=="color:")
-            {
-                Graph>>color[num];
-                cout<<color[num];
-            }
-
-            if(line=="neighbours:")
-            {
-                string n;
-                while(n!="   ")
-                {
-                    Graph>>n;
-                    stringstream ss(n);
-                    int c;
-                    ss >> c;
-                    n = c;
-                    Neighbours[num].push_back(c);
-                }
-            }
-        }
+        Node.push_back("Node");
+        weight.push_back("0");
+        X.push_back("0");
+        Y.push_back("0");
+        color.push_back("0");
+        //Neighbours.push_back(0);                      ///injaaaaaaa
     }
 
     for(int i=0; i<NodesNumber; i++)
@@ -200,6 +139,68 @@ void Parser::Parse()
         cout<<"Y"<<Y[i]<<endl;
         cout<<"color"<<color[i]<<endl;
     }
+
+
+    if(Graph.is_open())
+    {
+        while(Graph>>line)
+        {
+            cout<<line<<endl;
+            if(line==" Node:")
+            {
+                num++;
+            }
+
+            if(line=="x_pos:")
+            {
+                Graph>>X[num];
+            }
+
+            if(line=="y-pos:")
+            {
+                Graph>>Y[num];
+            }
+
+            if(line=="weight:")
+            {
+                Graph>>weight[num];
+            }
+
+            if(line=="color:")
+            {
+                Graph>>color[num];
+            }
+
+            if(line=="neighbours:")
+            {
+                int counter=0;
+                string n;
+                do
+                {
+                    int c;
+                    Graph>>n;
+                    cout<<n<<endl;
+                    stringstream ss(n);
+                    ss>>c;
+                    cout<<"jhffkjghdjksf;l"<<endl;
+                    Neighbours[num].push_back(c);               ///injaaaaaa
+                    counter++;
+                }
+                while(n!="   ");
+
+                nNum.push_back(counter);
+            }
+        }
+    }
+
+    /*for(int i=0; i<NodesNumber; i++)
+    {
+        cout<<"Node"<<Node[i]<<endl;
+        cout<<"weight"<<weight[i]<<endl;
+        cout<<"X"<<X[i]<<endl;
+        cout<<"Y"<<Y[i]<<endl;
+        cout<<"color"<<color[i]<<endl;
+    }*/
 
     Graph.close();
 }

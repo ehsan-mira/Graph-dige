@@ -8,6 +8,8 @@ class Parser
         //Graph Graph;
         int NodesNumber;
         void Parse();
+        void Write();
+        void Read();
 
         vector <string> Node;
         vector <string> weight;
@@ -15,5 +17,5 @@ class Parser
         vector <string> Y;
         vector <string> color;
         vector <int> nNum;
-        vector <vector <int> > Neighbours;
+        vector < vector <int> > Neighbours;
 };
