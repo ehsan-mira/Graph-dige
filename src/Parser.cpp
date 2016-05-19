@@ -139,7 +139,7 @@ void Parser::Read()
     stringstream ss(line);
     ss >> NodesNumber;
 
-    for(int i=0; i<NodesNumber; i++)
+    /*for(int i=0; i<NodesNumber; i++)
     {
         Node.push_back("Node");
         weight.push_back("0");
@@ -148,7 +148,7 @@ void Parser::Read()
         color.push_back("0");
         vector <int> newvec;
         Neighbours.push_back(newvec);
-    }
+    }*/
 
     /*for(int i=0; i<NodesNumber; i++)
     {
@@ -167,31 +167,40 @@ void Parser::Read()
             cout<<line<<endl;
             if(line==" Node:")
             {
+                Node.push_back("Node");
                 num++;
             }
 
             if(line=="x_pos:")
             {
+                X.push_back("0");
                 Graph>>X[num];
             }
 
             if(line=="y-pos:")
             {
+                Y.push_back("0");
                 Graph>>Y[num];
             }
 
             if(line=="weight:")
             {
+                weight.push_back("0");
                 Graph>>weight[num];
             }
 
             if(line=="color:")
             {
+                color.push_back("0");
                 Graph>>color[num];
             }
 
             if(line=="neighbours:")
             {
+
+                vector <int> newvec;
+                Neighbours.push_back(newvec);
+
                 int counter=0;
                 string n;
                 do
@@ -216,7 +225,7 @@ void Parser::Read()
         }
     }
 
-    for(int i=0; i<NodesNumber; i++)
+    /*for(int i=0; i<NodesNumber; i++)
     {
         cout<<"Node"<<Node[i]<<endl;
         cout<<"X"<<X[i]<<endl;
@@ -224,7 +233,7 @@ void Parser::Read()
         cout<<"weight"<<weight[i]<<endl;
         cout<<"color"<<color[i]<<endl;
         cout<<"nNum"<<nNum[i]<<endl;
-    }
+    }*/
 
     Graph.close();
 }
