@@ -133,7 +133,7 @@ void Parser::Read()
     int num=0;
     Graph.seekg(0,ios::beg);
     a = Graph.tellg();
-    cout<<a;
+    //cout<<a;
 
     Graph>>line;
     stringstream ss(line);
@@ -165,7 +165,7 @@ void Parser::Read()
         while(Graph>>line)
         {
             cout<<line<<endl;
-            if(line==" Node:")
+            if(line=="Node:")
             {
                 Node.push_back("Node");
                 num++;
@@ -174,25 +174,25 @@ void Parser::Read()
             if(line=="x_pos:")
             {
                 X.push_back("0");
-                Graph>>X[num];
+                Graph>>X[num-1];
             }
 
-            if(line=="y-pos:")
+            if(line=="y_pos:")
             {
                 Y.push_back("0");
-                Graph>>Y[num];
+                Graph>>Y[num-1];
             }
 
             if(line=="weight:")
             {
                 weight.push_back("0");
-                Graph>>weight[num];
+                Graph>>weight[num-1];
             }
 
             if(line=="color:")
             {
                 color.push_back("0");
-                Graph>>color[num];
+                Graph>>color[num-1];
             }
 
             if(line=="neighbours:")
@@ -207,25 +207,29 @@ void Parser::Read()
                 {
                     int c;
                     Graph>>n;
-                    cout<<n<<endl;
                     stringstream ss(n);
                     ss>>c;
-                    cout<<c<<endl;
 
                     if(c<1 || c>NodesNumber || counter>=NodesNumber )
                         break;
 
-                    Neighbours[num].push_back(c-1);
+                    Neighbours[num-1].push_back(c-1);
                     counter++;
                 }
                 while(n!="end" || n!="|");
 
                 nNum.push_back(counter);
+
+                for(int i=0; i<counter; i++)
+                {
+                    cout<<"N"<<Neighbours[num][i];
+                }
+                cout<<endl;
             }
         }
     }
 
-    /*for(int i=0; i<NodesNumber; i++)
+    for(int i=0; i<NodesNumber; i++)
     {
         cout<<"Node"<<Node[i]<<endl;
         cout<<"X"<<X[i]<<endl;
@@ -233,7 +237,7 @@ void Parser::Read()
         cout<<"weight"<<weight[i]<<endl;
         cout<<"color"<<color[i]<<endl;
         cout<<"nNum"<<nNum[i]<<endl;
-    }*/
+    }
 
     Graph.close();
 }
