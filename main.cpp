@@ -1,11 +1,22 @@
-#include "mainwindow.h"
+#include "Graphic.h"
+#include "parser.h"
 #include <QApplication>
+#include <QMainWindow>
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    Parser p;
+    //p.func();
+    //p.Write();
+    p.Read();
 
-    return a.exec();
+    QApplication app(argc, argv);
+
+    Graphic *widget = new Graphic;
+
+    QMainWindow mainWindow;
+    mainWindow.setCentralWidget(widget);
+
+    mainWindow.showFullScreen();
+    return app.exec();
 }
