@@ -1,11 +1,15 @@
 #include "Graphic.h"
 #include "Edge.h"
 #include "Node.h"
+#include "parser.h"
 #include <math.h>
 //! [0]
-Graphic::Graphic(QWidget *parent)
+
+
+Graphic::Graphic(Parser &p, QWidget *parent)
     : QGraphicsView(parent)
 {
+    graphi=new Graph;
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
     scene->setSceneRect(-200, -200, 600, 600);
@@ -37,17 +41,17 @@ Graphic::Graphic(QWidget *parent)
     Node *node8 = new Node();
     Node *node9 = new Node();
 */
-    Node **node=new Node*[0]();
+   // Node **node=new Node*[0]();
 
-    for(int i=0,j=0;i<graphi->NodesNumber;i++)
-        node[i] = graphi->Nodes[i][j];
+     //   for(int i=0,j=0;i<graphi->NodesNumber;i++)
+      //  node[i] = graphi->Nodes[i][j];
 
 
     //for(int i=0;i<graphi.NodesNumber;i++)
    //     node[i]=new Node();
 
     for(int i=0,j=0;i<graphi->NodesNumber;i++)
-        node[i]->setPos(node[i]->xPos,node[i]->yPos);
+         graphi->Nodes[i][j].setPos( graphi->Nodes[i][j].xPos, graphi->Nodes[i][j].yPos);
     /*
       node2->setPos(10, -150);
     node3->setPos(150, -150);
@@ -60,7 +64,7 @@ Graphic::Graphic(QWidget *parent)
 
 */
     for(int i=0,j=0;i<graphi->NodesNumber;i++)
-        scene->addItem(node[i]);
+        scene->addItem( graphi->Nodes[i]);
    /*
     scene->addItem(node1);
     scene->addItem(node2);

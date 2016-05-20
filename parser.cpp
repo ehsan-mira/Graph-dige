@@ -1,11 +1,12 @@
 #include <iostream>
-#include "parser.h"
 #include <fstream>
-#include "QString"
+#include "string"
 #include "sstream"
+#include "parser.h"
 #include "locale"
 #include "stdlib.h"
 #include <stdlib.h>
+#include <vector>
 
 using namespace std;
 
@@ -15,23 +16,44 @@ Parser::Parser()
 }
 void Parser::setNodes()
 {
+    //cout<<"R";
+    //for ( int i = 0; i < NodesNumber; i++ )
+        //graphi.Nodes.push_back( Node* );
+    //cout<<"F";
+    graphi.Nodes=new Node*[NodesNumber+1];
+    //cout<<endl<<NodesNumber<<endl;
     for (int i=0,j=0;i<NodesNumber;i++)
     {
-        graphi->Nodes[i][j]->xPos = atoi(X[i].c_str());
-        graphi->Nodes[i][j]->yPos = atoi(Y[i].c_str());
-        graphi->Nodes[i][j]->color = color[i];
-        graphi->Nodes[i][j]->weight = atoi(weight[i].c_str());
-        graphi->Nodes[i][j]->neighboursNum = nNum[i];
+        //for ( int j = 0; j < nNum[i]; j++ )
+        // {
+        for(int t=1;t<=nNum[i];++t)
+            graphi.Nodes[t]=new Node[t];
+        //Node* a;
+           // graphi.Nodes.push_back(a);
+         //}
+       //  graphi.Nodes[i][j].xPos=1;
+     //   int b=atoi(X[i].c_str());
+   //     cout<<"M"<<endl;
+       // cout<< atoi(X[i].c_str())<<endl;
+        graphi.Nodes[i][j].xPos = atoi(X[i].c_str());
+        graphi.Nodes[i][j].yPos = atoi(Y[i].c_str());
+        //graphi.Nodes[i][j].color = color[i];
+        graphi.Nodes[i][j].weight = atoi(weight[i].c_str());
+        graphi.Nodes[i][j].neighboursNum = nNum[i];
+ //       cout<<"AASASASASAS";
     }
+    /*
     for(int i=0;i<NodesNumber;i++)
     {
         for(int j=1;j<NodesNumber;j++)
         {
 
-            graphi->Nodes[i][j] = graphi->Nodes[Neighbours[i][j]][j];
+            graphi.Nodes[i][j] = graphi.Nodes[Neighbours[i][j]][j];
         }
 
     }
+    */
+
 }
 
 
@@ -44,7 +66,7 @@ void Parser::func()
 
    Graph<<NodesNumber<<"\n";
 
-   graphi->NodesNumber=this->NodesNumber;
+   graphi.NodesNumber=this->NodesNumber;
 
    for(int i=0; i<NodesNumber; i++)
         Graph<<"| Node:  x_pos:      y_pos:      weight:     color:         neighbours:                                                                                                                                                        \n";
@@ -76,7 +98,7 @@ void Parser::Write()
             if(line=="Node:")
             {
                 num++;
-                Node.push_back("Node");
+                Noder.push_back("Node");
                 weight.push_back("0");
                 X.push_back("0");
                 Y.push_back("0");
@@ -191,7 +213,7 @@ void Parser::Read()
             //cout<<line<<endl;
             if(line=="Node:")
             {
-                Node.push_back("Node");
+                Noder.push_back("Node");
                 num++;
             }
 
@@ -222,7 +244,7 @@ void Parser::Read()
             if(line=="neighbours:")
             {
 
-                QVector <int> newvec;
+                vector <int> newvec;
                 Neighbours.push_back(newvec);
 
                 int counter=0;
@@ -249,8 +271,18 @@ void Parser::Read()
         }
 
     }
-
+    //cout<<"A";
     setNodes();
+    //cout<<"B";
+     //for (int i=0,j=0;i<NodesNumber;i++)
+    //{
+   //     cout<<"X"<<graphi.Nodes[i][j].xPos<<endl;
+  //      cout<<"Y"<<graphi.Nodes[i][j].yPos<<endl;;
+        //cout<<graphi.Nodes[i][j].color<<endl;
+  //      cout<<"Weight"<<graphi.Nodes[i][j].weight<<endl;
+ //       cout<<"neigh"<<graphi.Nodes[i][j].neighboursNum<<endl;
+//    }
+
     /*for(int i=0; i<NodesNumber; i++)
     {
         cout<<"Node"<<Node[i]<<endl;

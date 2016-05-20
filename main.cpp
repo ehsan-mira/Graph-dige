@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 
     QApplication app(argc, argv);
 
-    Graphic *widget = new Graphic;
-
+    Graphic *widget = new Graphic(p);
+   // widget->Setgraphi(p.graphi);
     QMainWindow mainWindow;
     mainWindow.setCentralWidget(widget);
 

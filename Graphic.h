@@ -3,8 +3,9 @@
 
 #include <QGraphicsView>
 #include "Node.h"
-#include "graph.h"
+#include "Graph.h"
 #include "parser.h"
+
 //! [0]
 
 class Graphic : public QGraphicsView
@@ -12,8 +13,8 @@ class Graphic : public QGraphicsView
     Q_OBJECT
 
 public:
-    Graphic(QWidget *parent = 0);
-
+    Graphic(Parser &p,QWidget *parent = 0);
+    //int Setgraphi(Graph graphi1);
     void itemMoved();
 
 protected:
@@ -27,7 +28,7 @@ protected:
     //void scaleView(qreal scaleFactor);
 
 private:
-   // Graph *graphi;
+    Graph *graphi;
     int timerId;
     Node *centerNode;
 };

@@ -2,13 +2,14 @@
 #define GRAPH_H
 
 #include "Node.h"
-#include <QList>
-#include <QString>
+#include <vector>
+#include <String>
 
+using namespace std;
 struct Graph
 {
-    QList<QList<Node*>> Nodes;
-    int NodesNumber;
+ Node **Nodes;
+int NodesNumber;
 };
 
 

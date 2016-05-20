@@ -1,11 +1,12 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include <vector>
+#include "string"
 #include "Graph.h"
-#include <QVector>
-#include "QString"
 
 using namespace std;
+
 class Parser
 {
     public:
@@ -16,13 +17,13 @@ class Parser
         void Write();
         void Read();
         void setNodes();
-        QVector <string> Node;
-        QVector <string> weight;
-        QVector <string> X;
-        QVector <string> Y;
-        QVector <string> color;
-        QVector <int> nNum;
-        QVector < QVector <int> > Neighbours;
+        vector <string> Noder;
+        vector <string> weight;
+        vector <string> X;
+        vector <string> Y;
+        vector <string> color;
+        vector <int> nNum;
+        vector < vector <int> > Neighbours;
 };
 
 #endif // PARSER_H
